@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/output.css">
+</head>
+<body class = "bg-gray-950 min-h-screen flex flex-col items-center justify-center">
+    <h1 class = "text-4xl bg-gray-950">Trau Research Agent</h1>
+    <input type="text" id = "topic" placeholder="Enter the topic you want to Research..">
+    <button onclick="generateReport()">generate Report</button>
+    <p id = "status"></p>
+
+
+    <script>
+        async function generateReport() {
+            const topic = document.getElementById("topic").value
+            document.getElementById("status").innerText = "Researching..... this may take some time"
+
+            const response = await fetch(`/research?topic=${topic}`,{
+                method: "POST"
+            })
+
+            const data = await response.json()
+            document.getElementById("status").innerText = data.message
+
+        }
+            
+        
+    </script>
+</body>
+</html>

@@ -91,50 +91,50 @@ def create_pdf(report_text,filename):
 #     pdf.output(filename)
 #     print(f"PDF: {filename} created succesfully")
 
-while True:
+# while True:
 
     
 
-    topic = input("Enter research topic(or quit:'quit'): ")
+#     topic = input("Enter research topic(or quit:'quit'): ")
 
-    final_report = None
+#     final_report = None
 
-    if topic.lower() == "quit":
-        print("Trau says goodbye!!..")
-        break
+#     if topic.lower() == "quit":
+#         print("Trau says goodbye!!..")
+#         break
 
-    print("Trau is Working.....")
+#     print("Trau is Working.....")
 
     
 
-    for event in agent.stream(
-        {"messages": [HumanMessage(content=f"You are an AI research Agent called Trau created by Ashmil. Research this topic thoroughly and create a detailed and comprehensive report: {topic}")]},
-        stream_mode="updates"
-    ):
+#     for event in agent.stream(
+#         {"messages": [HumanMessage(content=f"You are an AI research Agent called Trau created by Ashmil. Research this topic thoroughly and create a detailed and comprehensive report: {topic}")]},
+#         stream_mode="updates"
+#     ):
         
-        for node,data in event.items():
-            messages = data.get("messages",[])
+#         for node,data in event.items():
+#             messages = data.get("messages",[])
 
-            for message in messages:
-                if hasattr(message,"tool_calls") and message.tool_calls:
-                    for tool_call in message.tool_calls:
-                        query = tool_call.get("args",{}).get("query","")
-                        print(f"Searching: {query}")
+#             for message in messages:
+#                 if hasattr(message,"tool_calls") and message.tool_calls:
+#                     for tool_call in message.tool_calls:
+#                         query = tool_call.get("args",{}).get("query","")
+#                         print(f"Searching: {query}")
 
-                elif isinstance(message,ToolMessage):
-                    print(f"fetched results for: {message.name}")
+#                 elif isinstance(message,ToolMessage):
+#                     print(f"fetched results for: {message.name}")
 
 
-                elif isinstance(message,AIMessage):
-                    print(f"\nReports:\n{message.content}")
-                    final_report = message.content
+#                 elif isinstance(message,AIMessage):
+#                     print(f"\nReports:\n{message.content}")
+#                     final_report = message.content
                          
 
-    if final_report:
-        filename = input("Enter filename you want to save the report into pdf: ")
-        if not filename.endswith(".pdf"):
-            filename += ".pdf"
-        create_pdf(final_report,filename)     
+    # if final_report:
+    #     filename = input("Enter filename you want to save the report into pdf: ")
+    #     if not filename.endswith(".pdf"):
+    #         filename += ".pdf"
+    #     create_pdf(final_report,filename)     
 
 
 
