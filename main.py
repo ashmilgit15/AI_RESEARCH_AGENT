@@ -3,9 +3,9 @@ from langchain_openai import ChatOpenAI
 from langchain_tavily import TavilySearch
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import HumanMessage , AIMessage , ToolMessage
-
+from fpdf import FPDF
 import os
-
+import re
 load_dotenv()
 
 tavily_api_key = os.getenv("TAVILY_API_KEY")
@@ -59,4 +59,46 @@ while True:
 
 
                 elif isinstance(message,AIMessage):
-                    print(f"\nReports:\n{message.content}")     
+                    print(f"\nReports:\n{message.content}")
+                    final_report = message.content
+                    filename = input("Enter filename you want to save the report into pdf")     
+
+
+def create_pdf(report_text,filename):
+        
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True,margin=15)
+    lines = report_text.splitlines()
+
+    for line in lines:
+        if line.startswith("##"):
+            text = line.replace("##","")
+            pdf.set_font("Arial",style="B",size=16)
+            pdf.cell(0,10,txt=text,ln=True)
+
+        elif line.startswith("###",""):
+            text = line.replace("###","")
+            pdf.set_font("Arial",style="B",size=13)
+            pdf.cell(0,8,txt=text,ln=True)   
+
+        elif line.startswith("- "):
+            text = "• " + line[2:]
+            pdf.set_font("Arial",size=11)
+            pdf.cell(0,7,txt=text,ln=True)
+
+
+        elif line.strip() == "":
+            pdf.ln(4) 
+
+        else:
+            pdf.set_font("Arial",size=13)
+            pdf.multi_cell(0,7,txt=line)
+
+
+    pdf.output(filename)
+    print(f"PDF: {filename} created succesfully")
+
+
+if final_report:
+    create_pdf(final_report,filename)                  
