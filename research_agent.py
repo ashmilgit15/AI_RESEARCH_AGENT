@@ -3,7 +3,6 @@ from langchain_openai import ChatOpenAI
 from langchain_tavily import TavilySearch
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage , AIMessage , ToolMessage
-from fpdf import FPDF
 import markdown2
 from weasyprint import HTML
 import os
