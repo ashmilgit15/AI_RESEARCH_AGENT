@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi import Request
@@ -40,5 +41,6 @@ def research(topic:str):
 
 
         if final_report:
-            create_pdf(final_report,f"{topic}.pdf")    
-            return {"message":"report generated succesfully"}           
+            create_pdf(final_report,f"report.pdf")    
+            return FileResponse("report.pdf",filename="report.pdf",media_type="application/pdf")
+                       
