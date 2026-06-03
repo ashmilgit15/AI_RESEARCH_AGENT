@@ -29,7 +29,7 @@
 ## CREDITS
 ### This project incldues/uses
 
-![Tavily Api key]{www.app.tavily.com}
+[Tavily](app.tavily.com)
 
 ## 📄 License  
 This project is licensed under the [MIT License](LICENSE).
