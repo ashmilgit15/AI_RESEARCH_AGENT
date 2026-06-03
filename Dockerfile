@@ -2,6 +2,7 @@
 FROM python:3.11-slim
 
 # Step 2: Install system dependencies required by WeasyPrint
+# Step 2: Install system dependencies required by WeasyPrint
 RUN apt-get update && apt-get install -y \
     libpango-1.0-0 \
     libharfbuzz0b \
@@ -9,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     libjpeg-dev \
     libopenjp2-7-dev \
-    libgdk-pixbuf2.0-0 \
+    shared-mime-info \
+    libgdk-pixbuf-2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Step 3: Set up your working directory inside the container
