@@ -1,4 +1,4 @@
-# Project Name
+# Trau Research Agent
 *AI Resaerch Website that gives you a report pdf of Detailed Research.*
 
 ##  Features
