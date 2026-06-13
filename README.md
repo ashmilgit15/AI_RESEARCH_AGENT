@@ -1,34 +1,30 @@
-# Trau Research Agent
-*AI Resaerch Website that gives you a report pdf of Detailed Research.*
+ # Trau — AI Research Agent                                                                                                                                                                       
+                                                                                                                                                                                                     
+    Give it a topic, get a proper research PDF. Pulls from multiple sources via Tavily,                                                                                                              
+    compiles a structured report, and drops it straight into your downloads folder.                                                                                                                  
+                                                                                                                                                                                                     
+    Built this because I kept switching between 15 tabs whenever I needed to research something.                                                                                                     
+                                                                                                                                                                                                     
+    ## Stack                                                                                                                                                                                         
+    - FastAPI + Uvicorn                                                                                                                                                                              
+    - LangChain (ReAct agent)                                                                                                                                                                        
+    - Tavily Search API                                                                                                                                                                              
+    - WeasyPrint for PDF generation                                                                                                                                                                  
+    - Kimi K2 via Hack Club's AI proxy                                                                                                                                                               
+                                                                                                                                                                                                     
+    ## Setup
+  
+    ```bash
+    git clone https://github.com/ashmilgit15/AI_RESEARCH_AGENT.git
+    cd AI_RESEARCH_AGENT
+    uv sync
+    cp .env.example .env  # add your API keys
+    uvicorn main:app --reload
+  
+  Open http://localhost:8000, type a topic, hit Generate.
 
-##  Features
-- **Multi Web Search**: *the research combines information from multiple sources.*
-- **Clean UI**: *Website provides a simple and clean UI.*
-- **PDF AUTO DOWNLOAD**: *After generating Report,pdf automatically downloads to your system's Download directory.*
-
-##  Installation  
-1. Clone the repo:  
-   ```bash
-   git clone https://github.com/ashmilgit15/AI_RESEARCH_AGENT.git
-   cd AI_RESEARCH_AGENT
-   ```
-2. Install dependencies:  
-   ```bash
-   uv sync
-   ```
-3. Start the application:  
-   ```bash
-   uvicorn main:app --reload
-   ```
-
-##  Usage  
-
-1. *Run server.*  
-2. *Enter the topic you want to research.*  
-3. *Click generate Report.*
 
 ## CREDITS
-### This project incldues/uses
 
 * [Tavily](app.tavily.com)
 * [Hackclub-api-key](ai.hackclub.com)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trau Research Agent</title>
     <link rel="stylesheet" href="/static/css/output.css">
 </head>
 <body class = "bg-gray-950 min-h-screen flex flex-col items-center justify-center">
@@ -20,6 +20,9 @@
     <script>
         async function generateReport() {
             const topic = document.getElementById("topic").value
+            const btn = document.querySelector("button")
+            btn.disabled = true
+            btn.textContent = "Researching...."
             document.getElementById("status").innerText = "Researching..... this may take some time"
 
             const response = await fetch(`/research?topic=${topic}`,{
@@ -37,6 +40,8 @@
             document.getElementById("status").innerText = "Report Downloaded"
 
         }
+
+        btn.disabled = false
             
         
     </script>
