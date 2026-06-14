@@ -4,4 +4,5 @@ test.pdf
 __pycache__
 node_modules
 .venv
+py_learn/list_comprehemsion.py
 py_learn
